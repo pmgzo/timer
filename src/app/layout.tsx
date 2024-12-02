@@ -14,11 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${digital.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${digital.variable} antialiased`}>{children}</body>
     </html>
   );
 }
