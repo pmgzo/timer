@@ -10,12 +10,19 @@ interface StartButtonProps {
 }
 
 export default function StartButton({ state, toggle }: StartButtonProps) {
-  return state === ButtonState.paused ? (
+  return state === ButtonState.started ? (
     <button
       className="p-3 rounded bg-yellow-400 hover:bg-yellow-600"
       onClick={toggle}
     >
-      Paused
+      Pause
+    </button>
+  ) : state === ButtonState.paused ? (
+    <button
+      className="p-3 rounded bg-green-700 hover:bg-green-800"
+      onClick={toggle}
+    >
+      Resume
     </button>
   ) : (
     <button
