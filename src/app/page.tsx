@@ -64,24 +64,25 @@ export default function Home() {
   }, [timer, minuteTimer, secondTimer])
 
   return (
-    <div>
-      <div className="text-7xl">
-        {formatTimeNumber(minuteTimer)}:{formatTimeNumber(secondTimer)}
-      </div>
-      <div className="flex flex-row">
-        <input name="minute-input" value={minuteTimer} onChange={changeMinuteTimer}/>
-        <input name="second-input" value={secondTimer} onChange={changeSecondTimer}/>
-        <button className="bg-green-400" onClick={() => {
-          setTimer({activated: true, timestamp: Date.now(), time: minuteTimer * 60 * 1000 + secondTimer * 1000})
-        }
-      }>Start</button>
-        <button className="bg-red-400" onClick={() => {
-          setTimer({activated: false, timestamp: 0, time: 0})
-          setMinuteTimer(0)
-          setSecondTimer(0)
-        }
-      }>Reset</button>
-      
+    <div className="mt-10 flex justify-center">
+      <div className="flex flex-col w-[400px] h-[150px] border-2 border-white">
+        <div className="flex justify-center ">
+          <input className="caret-white bg-black focus:bg-white focus:text-black focus:outline-white text-7xl w-[70px] h-[60px]" name="timerInput" value={formatTimeNumber(minuteTimer)} onChange={changeMinuteTimer}/>
+          <div className="text-7xl">:</div>
+          <input className="caret-white bg-black focus:bg-white focus:text-black focus:outline-white text-7xl w-[70px] h-[60px]" name="timerInput" value={formatTimeNumber(secondTimer)} onChange={changeSecondTimer}/>      
+        </div>
+        <div className="flex justify-center space-x-4">
+        <button className="p-3 rounded bg-green-400 hover:bg-green-600" onClick={() => {
+            setTimer({activated: true, timestamp: Date.now(), time: minuteTimer * 60 * 1000 + secondTimer * 1000})
+          }
+        }>Start</button>
+        <button className="p-3 rounded bg-red-400 hover:bg-red-600" onClick={() => {
+            setTimer({activated: false, timestamp: 0, time: 0})
+            setMinuteTimer(0)
+            setSecondTimer(0)
+          }
+        }>Reset</button>
+        </div>
       </div>
     </div>
   );
